@@ -1,29 +1,22 @@
 package com.mateuszzbylut.calcnet;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
-import android.widget.TextView;
 
-import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
 import static org.junit.Assert.*;
 
 /**
@@ -54,5 +47,55 @@ public class ConvertActivityInstrumentedTest {
 
         Espresso.onView(withId(R.id.convert_activity_button)).perform(click());
     }
+
+    @Rule
+    public ActivityTestRule<ConvertActivity> convertTestRule =
+            new ActivityTestRule<>(ConvertActivity.class);
+
+    private  ConvertActivity convertActicity;
+
+    @Test
+    public void whenDecConvertThenConvertToBinOctHex() {
+        convertActicity = convertTestRule.getActivity();
+        onView(withId(R.id.numberToConvert)).perform(typeText("17"));
+        onView(withId(R.id.buttonConvert)).perform(click());
+
+        Espresso.onView(allOf(withId(R.id.outputText), withText("BIN: 10001")));
+        Espresso.onView(allOf(withId(R.id.outputText2), withText("OCT: 21")));
+        Espresso.onView(allOf(withId(R.id.outputText3), withText("HEX: 11")));
+    }
+
+    @Test
+    public void whenFromBinThenSetBinConvert() {
+        convertActicity = convertTestRule.getActivity();
+        onView(withId(R.id.binButton)).perform(click());
+
+        Espresso.onView(allOf(withId(R.id.decTitle), withText("BIN")));
+    }
+
+    @Test
+    public void whenFromDecThenSetDecConvert() {
+        convertActicity = convertTestRule.getActivity();
+        onView(withId(R.id.decButton)).perform(click());
+
+        Espresso.onView(allOf(withId(R.id.decTitle), withText("DEC")));
+    }
+
+    @Test
+    public void whenFromOctThenSetOctConvert() {
+        convertActicity = convertTestRule.getActivity();
+        onView(withId(R.id.octButton)).perform(click());
+
+        Espresso.onView(allOf(withId(R.id.decTitle), withText("OCT")));
+    }
+
+    @Test
+    public void whenFromHexThenSetHexConvert() {
+        convertActicity = convertTestRule.getActivity();
+        onView(withId(R.id.hexButton)).perform(click());
+
+        Espresso.onView(allOf(withId(R.id.decTitle), withText("HEX")));
+    }
+
 
 }

@@ -17,7 +17,6 @@
         android:layout_below="@+id/numberToConvert"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
-        android:onClick="convertDecToBin"
         android:id="@+id/buttonConvert" />
 
     <TextView
@@ -28,59 +27,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="98dp"
         android:id="@+id/outputText" />
-
-    <TextView
-        android:text="@string/dec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="84dp"
-        android:textSize="29sp"
-        android:id="@+id/decTitle"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/numberToConvert"
-        android:layout_alignBottom="@+id/decTitle"
-        android:layout_toEndOf="@+id/decTitle"
-        android:layout_marginStart="13dp" />
-
-    <Button
-        android:text="@string/bin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/binButton" />
-
-    <Button
-        android:text="@string/oct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/numberToConvert"
-        android:id="@+id/octButton" />
-
-    <Button
-        android:text="@string/dec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/outputText"
-        android:id="@+id/decButton" />
-
-    <Button
-        android:text="@string/hex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/decButton"
-        android:id="@+id/hexButton" />
 
     <TextView
         android:text=""
@@ -99,5 +45,67 @@
         android:layout_alignEnd="@+id/outputText2"
         android:layout_marginTop="36dp"
         android:id="@+id/outputText3" />
+
+    <Button
+        android:text="@string/bin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/binButton"
+        android:onClick="fromBin"
+        android:minWidth="75dip"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/hex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hexButton"
+        android:onClick="fromHex"
+        android:minWidth="75dip"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/dec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="29sp"
+        android:id="@+id/decTitle"
+        android:layout_alignBottom="@+id/numberToConvert"
+        android:layout_alignEnd="@+id/octButton" />
+
+    <Button
+        android:text="@string/dec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/decButton"
+        android:onClick="fromDec"
+        android:minWidth="75dip"
+        android:layout_below="@+id/hexButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="7dp" />
+
+    <Button
+        android:text="@string/oct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/octButton"
+        android:minWidth="75dip"
+        android:onClick="fromOct"
+        android:layout_alignBaseline="@+id/decButton"
+        android:layout_alignBottom="@+id/decButton"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/numberToConvert"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/decButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="27dp" />
 
 </RelativeLayout>
